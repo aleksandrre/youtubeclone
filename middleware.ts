@@ -12,8 +12,8 @@ export async function middleware(req: NextRequest) {
   console.log(`[Middleware Info] შემოსული pathname: ${pathname}`);
 
   try {
-    // ვიღებთ საწყის HTML გვერდს (index.html)
-    const response = await fetch(req.nextUrl.origin);
+    // შესწორება: პირდაპირ ვითხოვთ index.html ფაილს
+    const response = await fetch(new URL('/index.html', req.url));
     let html = await response.text();
 
     let productTitle, productDescription, productImageUrl, pageUrl;
